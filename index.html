@@ -1,0 +1,164 @@
+<html>
+
+<head>
+    <title>NASA Hackathon TW 2020</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Share+Tech+Mono">
+    <link rel="stylesheet" href="fontawesome/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        @font-face {
+            font-family: 'digital_dismayregular';
+            src: url('webfonts/digital_dismay-webfont.woff2') format('woff2'),
+                 url('webfonts/digital_dismay-webfont.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            background-image: linear-gradient(#041615,#0a2d2b);
+            color: white;
+            font-family: 'Share Tech Mono', 'Noto Sans TC', sans-serif;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        a:link, a:visited, a:focus {
+            color: white;
+            transition: .5s;
+        }
+        a:hover {
+            text-decoration: none;
+            color: #dac400;
+        }
+
+        ::-webkit-scrollbar {
+          width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+          background: rgba(0,0,0,0.2);
+          outline: 2px solid white;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: #dac400;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+          background: #CAB400;
+        }
+
+        #time-counter {
+            font-family: 'digital_dismayregular', 'Noto Sans TC', sans-serif;
+            font-size: 8em;
+            color: #FAA;
+        }
+
+        #info-textbox {
+            flex: 1;
+            outline: 2px solid #FFF;
+            background: rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        #timeline-bg, #timeline-ft {
+            width: 100%;
+            height: 10px;
+            background-color: #FFF;
+        }
+
+        #timeline-ft {
+            border: 3px solid #FFF;
+            background-color: #dac400;
+            transform: translate(-50%, 0);
+        }
+
+        #message-list {
+            height: 100%;
+            overflow: auto;
+        }
+
+        #message-list p {
+            margin: 0;
+            padding: 3px;
+        }
+
+        #message-list .message-time {
+            color: #dac400;
+        }
+        #message-list .message-content {
+            color: #DDD;
+        }
+
+        #spaceapps-logo {
+            background-image: url("assets/img/spaceapps.svg");
+            background-position: center;
+            background-size: 75%;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="height: 30%;" class="p-4">
+        <h1 class="text-center"><a href="https://2020.spaceappschallenge.org/locations/taipei/" target="_blank">NASA Hackathon TW 2020</a></h1>
+        <div class="text-center">
+            <p class="" id="time-counter">00:00</p>
+        </div>
+    </div>
+    <div class="text-center d-flex justify-content-center align-items-center flex-column" id="timeline" style="height: 30%">
+        <div id="timeline-bg"><div id="timeline-ft"></div></div>
+
+    </div>
+    <div class="d-flex" id="informations" style="height: 40%;">
+        <div class="flex-grow-1 d-flex p-4" style="width: 70%;">
+            <div class="" id="info-textbox">
+                <div class="p-2" id="message-list">
+                </div>
+                <div style="position: absolute; left: 0; top: calc(-1.5em - 2px); height: 1.5em; outline: 2px solid white;">
+                    <a style="font-size: 1em; margin: 0; padding: 3px;"><i class="fas fa-user"></i>50/50</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex-grow-1 d-flex pr-4 py-5" style="width: 30%; bottom: 0; position: relative">
+            <a href="https://2020.spaceappschallenge.org/locations/taipei/" target="_blank" id="spaceapps-logo">
+            </a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        function pad(num, size) {
+            return ('000000000' + num).substr(-size);
+        }
+
+        var targetDate = new Date().getTime() + (3*24*60*60*1000);
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = targetDate - now;
+
+            //var days = pad(Math.floor(distance / (1000 * 60 * 60 * 24)), 2);
+            var hours = pad(Math.floor(distance / (1000 * 60 * 60)), 2);
+            var minutes = pad(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)), 2);
+            var seconds = pad(Math.floor((distance % (1000 * 60)) / 1000), 2);
+
+            $("#time-counter").text(`${hours}:${minutes}:${seconds}`);
+
+            if (distance < 0) {
+
+            }
+        }, 100);
+
+        for(var i=0; i< 20; i++) {
+            $("#message-list").append(`<p><a class="message-time">09/08 13:30</a><a class="message-content">: 一些求助文字文字文字動態動態</a></p>`);
+        }
+    </script>
+</body>
+
+</html>
