@@ -54,16 +54,18 @@ a:hover {
     position: relative;
 }
 
-#timeline-bg, #timeline-ft {
+#timeline-bg {
     width: 100%;
     height: 10px;
-    background-color: #FFF;
+    background-color: rgba(0,0,0,0);
+    outline: 2px solid white;
 }
 
 #timeline-ft {
-    border: 3px solid #FFF;
+    width: 100%;
+    height: 10px;
     background-color: #dac400;
-    transform: translate(-50%, 0);
+    transform: translate(-72%, 0);
 }
 
 #message-list {
