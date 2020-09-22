@@ -41,12 +41,12 @@ a:hover {
 
 #time-counter {
     font-family: 'digital_dismayregular', 'Noto Sans TC', sans-serif;
-    font-size: 6em;
+    font-size: 5em;
     color: #FAA;
 }
 
 #informations {
-    height: 35%;
+    height: 38%;
 }
 
 #info-textbox {
