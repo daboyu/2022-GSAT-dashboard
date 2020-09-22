@@ -61,6 +61,11 @@ a:hover {
     background: rgba(0,0,0,0.2);
 }
 
+#info-count ul li span {
+    font-size: 2em;
+    color: #FAF;
+}
+
 #timeline-bg {
     width: 100%;
     height: 10px;
