@@ -87,7 +87,7 @@
             $(target).text(curNum);
             if(targetNum > curNum){
                 curNum++;
-                setTimeout(function(){runNums(target, targetNum, curNum)}, 10);
+                setTimeout(function(){runNums(target, targetNum, curNum)}, 30);
             }
         }
         function updatefile() {
@@ -98,7 +98,7 @@
                 var data = result['data']['room_data']['data'];
 
                 info_list.forEach((item, j) => {
-                    runNums(`#${item} span`, data[item], 0);
+                    runNums(`#${item} span`, data[item], (data[item]-50)>0?data[item]-50:0);
                 });
 
                 if(data["announcement"] != null){
