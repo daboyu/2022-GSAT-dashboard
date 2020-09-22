@@ -27,17 +27,18 @@
                 <div class="h-100" id="info-textbox">
                     <div class="p-2" id="message-list">
                     </div>
-                    <div style="position: absolute; left: 15px; top: calc(-1.5em - 2px); height: 1.5em; outline: 2px solid white;">
-                        <a style="font-size: 1em; margin: 0; padding: 3px;"><i class="fas fa-user"></i>250</a>
+                    <div id="slack_count" style="position: absolute; left: 15px; top: calc(-1.5em - 2px); height: 1.5em; outline: 2px solid white;">
+                        <a style="font-size: 1em; margin: 0; padding: 3px;"><i class="fas fa-user"></i><span>250</span></a>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-lg-4">
                 <div class="p-2 h-100" id="info-count">
                     <ul>
-                        <li>文件統計</li>
-                        <li>簡報統計</li>
-                        <li>專家統計</li>
+                        <li id="doc_char_count">文件字數統計: <span></span></li>
+                        <li id="slide_page_count">簡報頁數統計: <span></span></li>
+                        <li id="council_time">專家諮詢統計: <span></span></li>
+                        <li id="council_count">專家諮詢次數統計: <span></span></li>
                     </ul>
                 </div>
             </div>
@@ -74,15 +75,40 @@
             }
         }, 100);
 
-        for(var i=0; i< 20; i++) {
+        /*for(var i=0; i< 20; i++) {
             $("#message-list").append(`<p><a class="message-time">09/08 13:30</a><a class="message-content">: 一些求助文字文字文字動態動態</a></p>`);
+        }*/
+
+        //time_stamp, doc_char_count, slide_page_count, council_time, council_count, announcement, slack_count
+        var info_list = ["doc_char_count", "slide_page_count", "council_time", "council_count"];
+        var time_stamp = 0;
+        function updatefile() {
+            $.getJSON("https://meet.jothon.online/api/rpg/getroom?room=nasahackathon", function(result){
+                if(result['data']['room_data']['updated_at'] <= time_stamp)
+                    return;
+                time_stamp = result['data']['room_data']['updated_at'];
+                var data = result['data']['room_data']['data'];
+                console.log(result);
+                info_list.forEach((item, i) => {
+                    if(data[item] != null){
+                        $(`#${item} span`).text(data[item]);
+                    }
+
+                    if(data["announcement"] != null){
+                        $("#message-list").html("");
+                        data["announcement"].forEach((item, i) => {
+                            $("#message-list").append(`<p><a class="message-time">${item.time}</a><a class="message-content">: ${item.text}</a></p>`);
+                        });
+                    }
+
+                    if(data["slack_count"] != null){
+                        $("#slack_count span").text(data["slack_count"]);
+                    }
+                });
+            });
         }
 
-        $.getJSON("https://meet.jothon.online/api/rpg/getroom?room=nasahackathon", function(result){
-            $.each(result, function(i, field){
-                console.log(field['room_data']);
-            });
-        });
+        setInterval(updatefile, 1000);
     </script>
 </body>
 
