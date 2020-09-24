@@ -73,6 +73,18 @@ a:hover {
     outline: 2px solid white;
 }
 
+#timeline-bg .timeline-milestone {
+    width: 10px;
+    height: 100%;
+    text-align: left;
+    position: relative;
+    border-left: 1px solid red;
+}
+
+#timeline-bg .timeline-milestone.timeline-passed {
+    color: #FAA;
+}
+
 #timeline-ft {
     position: relative;
     width: 100%;
@@ -84,7 +96,7 @@ a:hover {
 #timeline-rocket {
     position: absolute;
     height: 30px;
-    right: -15px;
+    right: -40px;
     bottom: -10px;
     z-index: 999;
 }
