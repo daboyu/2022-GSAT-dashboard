@@ -11,13 +11,19 @@
 </head>
 
 <body>
+    <div id="onload-block" class="text-center d-flex justify-content-center align-items-center flex-column">
+        <div>
+            <h1 class="text-center"><a href="https://2020.spaceappschallenge.org/locations/taipei/" target="_blank">NASA Hackathon TW 2020</a></h1>
+            <a>loading...</a>
+        </div>
+    </div>
     <div style="height: 30%;" class="p-4 container-fluid">
         <h1 class="text-center"><a href="https://2020.spaceappschallenge.org/locations/taipei/" target="_blank">NASA Hackathon TW 2020</a></h1>
         <div class="text-center">
             <p class="" id="time-counter">00:00</p>
         </div>
     </div>
-    <div class="text-center d-flex justify-content-center align-items-center flex-column" id="timeline" style="height: 30%; overflow: hidden;">
+    <div class="text-center d-flex justify-content-center align-items-center flex-column" id="timeline" style="height: 43%; overflow: hidden;">
         <div id="timeline-bg">
             <div id="timeline-ft"><img src="assets/img/rocket.svg" id="timeline-rocket" /></div>
         </div>
@@ -64,9 +70,14 @@
 
         var milestones = [
             {
-            "title": "titleeeeeeee",
-            "discription": "discriptionssssssss",
-            "timestamp": -10000
+                "date-time": "10/3 18:00",
+                "title": "titleeeeeeee",
+                "stamp": -10000
+            },
+            {
+                "date-time": "10/3 20:00",
+                "title": "title22e",
+                "stamp": -5000
             }
         ]
 
@@ -74,10 +85,13 @@
         var maxDistance = targetDate - new Date().getTime();
         var flick = true;
         milestones.forEach((item, i) => {
-            $("#timeline-bg").append(`
-                <div class="timeline-milestone" id="milestone-${i}" style="left: ${100*(maxDistance+item['timestamp'])/maxDistance}%;">
-                    <h3>${item['title']}</h3>
-                    <p>${item['discription']}</p>
+            var left_pos = 100*(maxDistance+item['stamp'])/maxDistance;
+
+            $("#timeline").append(`
+                <div class="text-center d-flex justify-content-center align-items-center flex-column timeline-milestone ${left_pos>50?'milestone-right':'milestone-left'}" id="milestone-${i}" style="margin-top: ${i%2==0?-9:9}em;left: ${left_pos}%;">
+                    <div class="milestone-arrow ${i%2==0?'milestone-arrow-bottom':'milestone-arrow-top'}"></div>
+                    <p style="margin: 0; padding: 0; font-size: 1.2em;">${item['date-time']}</p>
+                    <p style="margin: 0; padding: 0; font-size: 1.8em;">${item['title']}</p>
                 </div>
             `)
         });
@@ -105,8 +119,7 @@
 
             $("#time-counter").text(`${hours}:${minutes}:${seconds}`);
             milestones.forEach((item, i) => {
-                if(item.timestamp*-1 > distance)
-                {
+                if (item['stamp'] * -1 > distance) {
                     $(`#milestone-${i}`).addClass("timeline-passed");
                 }
             });
@@ -136,6 +149,12 @@
             $.getJSON("https://meet.jothon.online/api/rpg/getroom?room=nasahackathon", function(result) {
                 if (result['data']['room_data']['updated_at'] <= time_stamp)
                     return;
+
+                if (time_stamp == 0) {
+                    $("#onload-block").animate({"opacity": 0},300,function(){
+                        $("#onload-block").css({"z-index": -999})
+                    });
+                }
                 time_stamp = result['data']['room_data']['updated_at'];
                 var data = result['data']['room_data']['data'];
 
@@ -153,10 +172,9 @@
                 if (data["slack_count"] != null) {
                     $("#slack_count span").text(data["slack_count"]);
                 }
-
             });
         }
-
+        updatefile();
         setInterval(updatefile, 1000);
     </script>
 </body>
