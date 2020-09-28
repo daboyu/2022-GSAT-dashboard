@@ -2,6 +2,7 @@
 
 <head>
     <title>NASA Hackathon TW 2020</title>
+    <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Share+Tech+Mono">
     <link rel="stylesheet" href="assets/fontawesome/all.min.css">
@@ -20,7 +21,7 @@
     <div style="height: 30%;" class="p-4 container-fluid">
         <h1 class="text-center"><a href="https://2020.spaceappschallenge.org/locations/taipei/" target="_blank">NASA Hackathon TW 2020</a></h1>
         <div class="text-center">
-            <p class="" id="time-counter">00:00</p>
+            <p class="" id="time-counter">00:00:00</p>
         </div>
     </div>
     <div class="text-center d-flex justify-content-center align-items-center flex-column" id="timeline" style="height: 43%; overflow: hidden;">
@@ -42,7 +43,7 @@
             <div class="col-12 col-lg-4">
                 <div class="p-2 h-100 d-flex flex-column justify-content-center" id="info-count">
                     <div class="">
-                        <ul>
+                        <ul class="m-0">
                             <li id="doc_char_count">文件字數統計: <span>0</span></li>
                             <li id="slide_page_count">簡報頁數統計: <span>0</span></li>
                             <li id="council_time">專家諮詢統計: <span>0</span></li>
@@ -64,34 +65,66 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script type="text/javascript">
+
         function pad(num, size) {
             return ('000000000' + num).substr(-size);
         }
 
         var milestones = [
             {
-                "date-time": "10/3 18:00",
-                "title": "titleeeeeeee",
-                "stamp": -10000
+                "date-time": "10/2 19:30",
+                "title": "開幕儀式開始",
+                "pos": "left"
+            },
+            {
+                "date-time": "10/3 09:30",
+                "title": "NASA 官網開放成果上傳",
+                "pos": "right"
+            },
+            {
+                "date-time": "10/3 10:00",
+                "title": "專家諮詢開始",
+                "pos": "left"
             },
             {
                 "date-time": "10/3 20:00",
-                "title": "title22e",
-                "stamp": -5000
+                "title": "專家諮詢結束",
+                "pos": "center"
+            },
+            {
+                "date-time": "10/4 11:00",
+                "title": "台灣區成果上傳截止時間",
+                "pos": "right"
+            },
+            {
+                "date-time": "10/4 13:00",
+                "title": "公布決選入圍團隊",
+                "pos": "right"
+            },
+            {
+                "date-time": "10/4 13:30",
+                "title": "決選團隊成果報告開始",
+                "pos": "left"
+            },
+            {
+                "date-time": "10/4 17:00",
+                "title": "宣布得獎團隊",
+                "pos": "left"
             }
         ]
 
-        var targetDate = new Date().getTime() + (15 * 1000);
+        var targetDate = new Date().getTime() + (2.5 * 24 * 60 * 60 * 1000);
         var maxDistance = targetDate - new Date().getTime();
         var flick = true;
         milestones.forEach((item, i) => {
-            var left_pos = 100*(maxDistance+item['stamp'])/maxDistance;
+            var item_dated = new Date("2020/10/5 6:00").getTime() - new Date("2020/"+item['date-time']).getTime();
+            var left_pos = 100*(maxDistance - item_dated)/maxDistance;
 
             $("#timeline").append(`
-                <div class="text-center d-flex justify-content-center align-items-center flex-column timeline-milestone ${left_pos>50?'milestone-right':'milestone-left'}" id="milestone-${i}" style="margin-top: ${i%2==0?-9:9}em;left: ${left_pos}%;">
+                <div class="text-center d-flex justify-content-center align-items-center flex-column timeline-milestone milestone-${item['pos']}" id="milestone-${i}" style="margin-top: ${i%2==0?-9:9}em;left: ${left_pos}%;">
                     <div class="milestone-arrow ${i%2==0?'milestone-arrow-bottom':'milestone-arrow-top'}"></div>
-                    <p style="margin: 0; padding: 0; font-size: 1.2em;">${item['date-time']}</p>
-                    <p style="margin: 0; padding: 0; font-size: 1.8em;">${item['title']}</p>
+                    <p style="margin: 0; padding: 0; font-size: 1em;">${item['date-time']}</p>
+                    <p style="margin: 0; padding: 0; font-size: 1em;">${item['title']}</p>
                 </div>
             `)
         });
@@ -108,7 +141,7 @@
                     $("#time-counter").css({
                         "opacity": (flick ? 1 : 0.5)
                     });
-                }, 1000);
+                }, 500);
             }
             $("#timeline-ft").css({
                 "transform": `translate(-${100*distance/maxDistance}%, 0)`
@@ -119,7 +152,8 @@
 
             $("#time-counter").text(`${hours}:${minutes}:${seconds}`);
             milestones.forEach((item, i) => {
-                if (item['stamp'] * -1 > distance) {
+                var item_dated = new Date("2020/10/4 18:00").getTime() - new Date("2020/"+item['date-time']).getTime();
+                if (item_dated > distance) {
                     $(`#milestone-${i}`).addClass("timeline-passed");
                 }
             });
