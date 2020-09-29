@@ -11,6 +11,8 @@ body {
     //background-image: linear-gradient(#041615,#0a2d2b);
     color: white;
     font-family: 'Share Tech Mono', 'Noto Sans TC', sans-serif;
+    overflow-x: hidden;
+    width: 100vw;
 }
 
 a:link, a:visited, a:focus {
@@ -23,12 +25,13 @@ a:hover {
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
   background: rgba(0,0,0,0.2);
-  outline: 2px solid white;
+  outline: 1px solid white;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -75,6 +78,21 @@ a:hover {
     font-size: 1.5em;
     color: #FAF;
 }
+#timeline-box {
+    background-color: rgba(0,0,0,0.1);
+    padding: 0;
+    height: calc(43% - 3em);
+    margin-bottom: 3em;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+#timeline {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+}
 
 #timeline-bg {
     width: 100%;
@@ -102,6 +120,12 @@ a:hover {
 }
 .milestone-right {
     margin-left: -12em;
+}
+.milestone-top {
+    margin-top: -9em;
+}
+.milestone-bottom {
+    margin-top: 9em;
 }
 .milestone-left {
     margin-left: 0em;
@@ -182,10 +206,12 @@ a:hover {
 }
 
 @media (max-width: 767px) {
-    body {
-        font-size: 0.8em;
+    #timeline-box {
+        font-size: 0.9em;
+        min-height: 22em;
     }
-    .timeline-milestone {
-        font-size: 0.6em;
+    #timeline {
+        width: 250%;
+        left: 0;
     }
 }

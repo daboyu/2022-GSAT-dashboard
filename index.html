@@ -21,12 +21,14 @@
     <div style="height: 30%;" class="p-4 container-fluid">
         <h1 class="text-center"><a href="https://2020.spaceappschallenge.org/locations/taipei/" target="_blank">NASA Hackathon TW 2020</a></h1>
         <div class="text-center">
-            <p class="" id="time-counter">00:00:00</p>
+            <p class="m-0" id="time-counter">00:00:00</p>
         </div>
     </div>
-    <div class="text-center d-flex justify-content-center align-items-center flex-column" id="timeline" style="height: 43%; overflow: hidden;">
-        <div id="timeline-bg">
-            <div id="timeline-ft"><img src="assets/img/rocket.svg" id="timeline-rocket" /></div>
+    <div id="timeline-box" class="container-fluid">
+        <div class="text-center d-flex justify-content-center align-items-center flex-column" id="timeline">
+            <div id="timeline-bg">
+                <div id="timeline-ft"><img src="assets/img/rocket.svg" id="timeline-rocket" /></div>
+            </div>
         </div>
     </div>
     <div class="container-fluid" id="informations">
@@ -117,11 +119,11 @@
         var maxDistance = targetDate - new Date().getTime();
         var flick = true;
         milestones.forEach((item, i) => {
-            var item_dated = new Date("2020/10/5 6:00").getTime() - new Date("2020/"+item['date-time']).getTime();
+            var item_dated = new Date("2020/10/5 5:00").getTime() - new Date("2020/"+item['date-time']).getTime();
             var left_pos = 100*(maxDistance - item_dated)/maxDistance;
 
             $("#timeline").append(`
-                <div class="text-center d-flex justify-content-center align-items-center flex-column timeline-milestone milestone-${item['pos']}" id="milestone-${i}" style="margin-top: ${i%2==0?-9:9}em;left: ${left_pos}%;">
+                <div class="text-center d-flex justify-content-center align-items-center flex-column timeline-milestone milestone-${item['pos']} milestone-${i%2==0?'top':'bottom'}" id="milestone-${i}" style="left: ${left_pos}%;">
                     <div class="milestone-arrow ${i%2==0?'milestone-arrow-bottom':'milestone-arrow-top'}"></div>
                     <p style="margin: 0; padding: 0; font-size: 1em;">${item['date-time']}</p>
                     <p style="margin: 0; padding: 0; font-size: 1em;">${item['title']}</p>
@@ -199,7 +201,7 @@
                 if (data["announcement"] != null) {
                     $("#message-list").html("");
                     data["announcement"].forEach((item, i) => {
-                        $("#message-list").append(`<p><a class="message-time">${item.time}</a><a class="message-content">: ${item.text}</a></p>`);
+                        $("#message-list").prepend(`<p><a class="message-time">${item.time}</a><a class="message-content">: ${item.text}</a></p>`);
                     });
                 }
 
