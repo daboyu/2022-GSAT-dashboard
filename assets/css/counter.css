@@ -1,0 +1,93 @@
+@font-face {
+    font-family: 'digital-webfont';
+    src: url('../webfonts/Digital-Display.woff2') format('woff2'),
+         url('../webfonts/Digital-Display.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: rgba(0,0,0,1);
+    color: white;
+    font-family: 'Share Tech Mono', 'Noto Sans TC', sans-serif;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.counter-box {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+}
+
+#big-logo {
+    position: fixed;
+    top: 3em;
+    width: 50%;
+    height: 50%;
+    background-image: url("../img/spaceapps.png");
+    background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: logo-sizer 10s linear;
+}
+#press-button {
+    position: fixed;
+    bottom: 5em;
+    width: 50%;
+    height: 50%;
+    background-image: url("../img/nasa_button_1.png");
+    background-size: 120%;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 9999999999;
+}
+#press-button-2 {
+    position: fixed;
+    bottom: 5em;
+    width: 50%;
+    height: 50%;
+    background-image: url("../img/nasa_button_2.png");
+    background-size: 120%;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 9999999999;
+}
+#time-counter-1 {
+    font-family: 'digital-webfont', 'Noto Sans TC', sans-serif;
+    font-size: 20em;
+    color: #FAA;
+}
+@keyframes go-flick {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    51% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+#time-counter-go {
+    font-family: 'Share Tech Mono', 'Noto Sans TC', sans-serif;
+    font-size: 10em;
+    color: #FAA;
+    animation: go-flick 1s linear infinite;
+}
+#time-counter-2 {
+    font-family: 'digital-webfont', 'Noto Sans TC', sans-serif;
+    font-size: 10em;
+    color: #FAA;
+}
