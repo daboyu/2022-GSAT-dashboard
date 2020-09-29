@@ -37,7 +37,6 @@
         var x = setInterval(function() {
             var now = new Date().getTime();
             var distance = targetDate - now;
-            console.log(distance);
             //console.log(distance);
             if (distance <= 0) {
                 distance = 0;
@@ -60,7 +59,7 @@
         function count321() {
             var num = 2;
             var x321 = setInterval(function(){
-                console.log(num);
+                //console.log(num);
                 $("#time-counter-1").text(num);
                 num--;
                 if(num<0){
