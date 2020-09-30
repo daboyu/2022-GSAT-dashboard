@@ -7,7 +7,10 @@
 }
 
 body {
-    background-color: rgba(0,255,0,1);
+    background-image: url("../img/bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     color: white;
     font-family: 'Share Tech Mono', 'Noto Sans TC', sans-serif;
     width: 100vw;
