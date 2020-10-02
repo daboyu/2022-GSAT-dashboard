@@ -203,7 +203,7 @@
                 if (data["announcement"] != null) {
                     $("#message-list").html("");
                     data["announcement"].forEach((item, i) => {
-                        $("#message-list").prepend(`<p><a class="message-time">${item.time}</a><a class="message-content">: ${item.text}</a></p>`);
+                        $("#message-list").append(`<p><a class="message-time">${item.time}</a><a class="message-content">: ${item.text}</a></p>`);
                     });
                 }
                 /*
