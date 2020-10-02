@@ -79,7 +79,7 @@
                 "pos": "left"
             },
             {
-                "date-time": "10/3 09:30",
+                "date-time": "10/3 09:00",
                 "title": "NASA 官網開放成果上傳",
                 "pos": "right"
             },
@@ -115,11 +115,11 @@
             }
         ]
 
-        var targetDate = new Date().getTime() + (2.5 * 24 * 60 * 60 * 1000);
+        var targetDate = new Date("2020/10/5 5:00").getTime();
         var maxDistance = targetDate - new Date().getTime();
         var flick = true;
         milestones.forEach((item, i) => {
-            var item_dated = new Date("2020/10/5 5:00").getTime() - new Date("2020/"+item['date-time']).getTime();
+            var item_dated = targetDate - new Date("2020/"+item['date-time']).getTime();
             var left_pos = 100*(maxDistance - item_dated)/maxDistance;
 
             $("#timeline").append(`
@@ -131,9 +131,20 @@
             `)
         });
 
+        var now = new Date().getTime();
         var x = setInterval(function() {
-            var now = new Date().getTime();
             var distance = targetDate - now;
+            $("#timeline-ft").css({
+                "transform": `translate(-${100*distance/maxDistance}%, 0)`
+            });
+            milestones.forEach((item, i) => {
+                var item_dated = targetDate - new Date("2020/"+item['date-time']).getTime();
+                if (item_dated > distance) {
+                    $(`#milestone-${i}`).addClass("timeline-passed");
+                }
+            });
+
+            distance = new Date("2020/10/4 18:00").getTime() - now;
 
             if (distance <= 0) {
                 distance = 0;
@@ -145,20 +156,11 @@
                     });
                 }, 500);
             }
-            $("#timeline-ft").css({
-                "transform": `translate(-${100*distance/maxDistance}%, 0)`
-            });
             var hours = pad(Math.floor(distance / (1000 * 60 * 60)), 2);
             var minutes = pad(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)), 2);
             var seconds = pad(Math.floor((distance % (1000 * 60)) / 1000), 2);
 
             $("#time-counter").text(`${hours}:${minutes}:${seconds}`);
-            milestones.forEach((item, i) => {
-                var item_dated = new Date("2020/10/4 18:00").getTime() - new Date("2020/"+item['date-time']).getTime();
-                if (item_dated > distance) {
-                    $(`#milestone-${i}`).addClass("timeline-passed");
-                }
-            });
 
         }, 100);
 

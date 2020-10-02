@@ -55,7 +55,8 @@
 
             $("#time-counter-2").text(`${hours}:${minutes}:${seconds}`);
         }, 100);
-
+        var audio = new Audio('assets/sound/drop_sound.wav');
+        var audio2 = new Audio('assets/sound/se_maoudamashii_effect04.mp3');
         function count321() {
             var num = 2;
             var x321 = setInterval(function(){
@@ -63,6 +64,7 @@
                 $("#time-counter-1").text(num);
                 num--;
                 if(num<0){
+                    audio2.play();
                     clearInterval(x321);
                     $("#time-counter-1").parent(".counter-box").animate({"opacity": "0"},0);
                     $("#time-counter-go").parent(".counter-box").animate({"opacity": "1"},0);
@@ -70,6 +72,9 @@
                         $("#time-counter-go").parent(".counter-box").animate({"opacity": "0"},100);
                         $("#time-counter-2").parent(".counter-box").animate({"opacity": "1"},100);
                     },2000);
+                }
+                else{
+                    audio.play();
                 }
             },1000);
         }
@@ -83,6 +88,7 @@
         $(document).keyup(function(event){
             if(event.keyCode == 13 && nowState == 1) //enter
             {
+                audio.play();
                 $("#press-button").animate({"opacity": "1"},50);
                 $("#press-button").parent(".counter-box").animate({"opacity": "0"},500);
                 $("#time-counter-1").parent(".counter-box").animate({"opacity": "1"},500);
