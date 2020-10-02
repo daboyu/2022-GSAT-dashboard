@@ -33,7 +33,7 @@
             return ('000000000' + num).substr(-size);
         }
 
-        var targetDate = new Date("2020/10/4 18:00").getTime();
+        var targetDate = new Date("2020/10/4 23:59").getTime();
         var x = setInterval(function() {
             var now = new Date().getTime();
             var distance = targetDate - now;
@@ -56,7 +56,7 @@
             $("#time-counter-2").text(`${hours}:${minutes}:${seconds}`);
         }, 100);
         var audio = new Audio('assets/sound/drop_sound.wav');
-        var audio2 = new Audio('assets/sound/se_maoudamashii_effect04.mp3');
+        var audio2 = new Audio('assets/sound/opening.wav');
         function count321() {
             var num = 2;
             var x321 = setInterval(function(){
@@ -71,7 +71,7 @@
                     setTimeout(function(){
                         $("#time-counter-go").parent(".counter-box").animate({"opacity": "0"},100);
                         $("#time-counter-2").parent(".counter-box").animate({"opacity": "1"},100);
-                    },2000);
+                    },5000);
                 }
                 else{
                     audio.play();
