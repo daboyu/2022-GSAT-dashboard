@@ -123,10 +123,10 @@ a:hover {
     margin-left: -12em;
 }
 .milestone-top {
-    margin-top: -9em;
+    margin-top: calc(-6em - 40px);
 }
 .milestone-bottom {
-    margin-top: 9em;
+    margin-top:  calc(6em + 40px);
 }
 .milestone-left {
     margin-left: 0em;
@@ -182,7 +182,8 @@ a:hover {
 
 #message-list {
     height: 100%;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #message-list p {
@@ -212,7 +213,7 @@ a:hover {
         min-height: 22em;
     }
     #timeline {
-        width: 250%;
+        width: 500%;
         left: 0;
     }
 }
