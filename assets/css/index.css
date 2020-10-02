@@ -4,6 +4,7 @@
          url('../webfonts/Digital-Display.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+    font-size: 0.9em;
 }
 
 body {
@@ -205,7 +206,7 @@ a:hover {
     height: 100%;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
     #timeline-box {
         font-size: 0.9em;
         min-height: 22em;
