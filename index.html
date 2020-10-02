@@ -116,7 +116,7 @@
         ]
 
         var targetDate = new Date("2020/10/5 5:00").getTime();
-        var maxDistance = targetDate - new Date().getTime();
+        var maxDistance = targetDate - new Date("2020/10/2 18:00").getTime();
         var flick = true;
         milestones.forEach((item, i) => {
             var item_dated = targetDate - new Date("2020/"+item['date-time']).getTime();
