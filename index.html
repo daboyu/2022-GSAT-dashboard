@@ -132,6 +132,9 @@
             `)
         });
 
+        var pos_px = (100 - 100*(targetDate - new Date().getTime())/maxDistance)*$("#timeline").width()/100 - 100;
+        $("#timeline-box").scrollLeft(pos_px);
+        
         var x = setInterval(function() {
             var now = new Date().getTime();
             var distance = targetDate - now;
