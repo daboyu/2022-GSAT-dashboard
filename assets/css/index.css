@@ -59,6 +59,13 @@ a:hover {
     color: #FAA;
 }
 
+#live-button {
+    position: fixed;
+    right: 1em;
+    top: 1em;
+    z-index: 99999999;
+}
+
 #informations {
     height: 25%;
 }
@@ -196,6 +203,7 @@ a:hover {
 }
 #message-list .message-content {
     color: #DDD;
+    word-break: break-all;
 }
 
 #spaceapps-logo {

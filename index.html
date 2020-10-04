@@ -23,6 +23,9 @@
         <div class="text-center">
             <p class="m-0" id="time-counter">00:00:00</p>
         </div>
+        <div id="live-button">
+            <a role="button" class="btn btn-danger btn-lg" href="https://www.facebook.com/twaic/live" target="_blank">LIVE</a>
+        </div>
     </div>
     <div id="timeline-box" class="container-fluid">
         <div class="text-center d-flex justify-content-center align-items-center flex-column" id="timeline">
@@ -134,7 +137,7 @@
 
         var pos_px = (100 - 100*(targetDate - new Date().getTime())/maxDistance)*$("#timeline").width()/100 - 100;
         $("#timeline-box").scrollLeft(pos_px);
-        
+
         var x = setInterval(function() {
             var now = new Date().getTime();
             var distance = targetDate - now;
@@ -207,7 +210,7 @@
                 if (data["announcement"] != null) {
                     $("#message-list").html("");
                     data["announcement"].forEach((item, i) => {
-                        $("#message-list").append(`<p><a class="message-time">${item.time}</a><a class="message-content">: ${marked(item.text)}</a></p>`);
+                        $("#message-list").append(`<p><a class="message-time">${item.time}</a><a class="message-content">: ${marked(item.text.replace("|"," |"))}</a></p>`);
                     });
                 }
                 /*
