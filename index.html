@@ -155,6 +155,9 @@
 
             if (distance <= 0) {
                 distance = 0;
+                $("#timeline-ft").css({
+                    "transform": `translate(0%, 0)`
+                });
                 clearInterval(x);
                 setInterval(function() {
                     flick = !flick;
@@ -180,7 +183,6 @@
         var time_stamp = 0;
 
         function runNums(target, targetNum, curNum) {
-            //console.log(target+" "+targetNum+": "+curNum);
             $(target).text(curNum);
             if (targetNum > curNum) {
                 curNum++;
