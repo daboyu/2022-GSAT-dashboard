@@ -24,24 +24,23 @@
         <div class="text-center">
             <p class="m-0" id="time-counter">00:00:00:00</p>
         </div>
-        <!--div id="live-button">
-            <a role="button" class="btn btn-danger btn-lg" href="https://www.facebook.com/twaic/live" target="_blank">LIVE</a>
-        </div-->
+		
     </div>
     <div id="timeline-box" class="container-fluid">
         <div class="text-center d-flex justify-content-center align-items-center flex-column" id="timeline">
             <div id="timeline-bg">
-                <div id="timeline-ft"><img src="assets/img/clock.svg" id="timeline-clock" /></div>
+                <div id="timeline-ft"></div>
             </div>
         </div>
     </div>
     <div class="container-fluid" id="informations">
         <div class="row h-100">
-            <div class="col-12 col-md-3">
+		
+            <div class="d-none d-lg-block col-12 col-md-3">
                 <div class="h-100" id="info-textbox">
                     <div class="p-2" id="link-list">
 					<div class="row">
-					<div class="col-sm">
+					<div class="col-sm-">
 						<li>
 							<a target="_blank" href="https://www.ceec.edu.tw/">大考中心首頁</a>
 						</li>
@@ -76,13 +75,14 @@
 						</li>
                     </div>
 					</div>
-                    <div id="icon" style="position: absolute; left: 15px; top: calc(-1.5em - 2px); height: 1.5em; outline: 2px solid white;">
+                    <div class="d-none d-lg-block" id="icon" style="position: absolute; left: 15px; top: calc(-1.5em - 2px); height: 1.5em; outline: 2px solid white;">
                         <a style="font-size: 1em; margin: 0; padding: 3px;"><i class="fas fa-link"></i><span> 相關連結</span></a>
                     </div>
 					</div>
                 </div>
             </div>
-            <div class="col-12 col-md-5">
+       		
+	   <div class="col-12 col-md-5">
                 <div class="p-2 h-100 d-flex flex-column justify-content-center" id="info-count">
 				<div id="icon" style="position: absolute; left: 15px; top: calc(-1.5em - 2px); height: 1.5em; outline: 2px solid white;">
                         <a style="font-size: 1em; margin: 0; padding: 3px;"><i class="fas fa-info"></i><span id="none"> 詳細資訊</span></a>
@@ -168,12 +168,17 @@
                     </div>
                 </div>
             </div>
+	   
             <div class="col-12 col-md-4">
                 <div class="p-2 h-100 d-flex flex-column justify-content-center" id="info-count">
-				<ul>2022學測儀表板作者：<a href="https://dabo.xyz/ target="_blank">Dabo Huang</a></ul>
-				<ul>2022學測儀表板使用<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh_TW" target="_blank"> CC 4.0 BY-SA 釋出</ul>
-				<ul><a href="" target"_blank">Fork on Github</a></ul>
-				<div id="icon" style="position: absolute; left: 15px; top: calc(-1.5em - 2px); height: 1.5em; outline: 2px solid white;">
+				<ul>2022學測儀表板作者：<a href="https://dabo.xyz/" target="_blank">Dabo Huang</a></ul>
+				<ul>2022學測儀表板使用<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh_TW" target="_blank"> CC 4.0 BY-SA </a>釋出</ul>
+				<ul>想幫自己學校客製化嗎？<a href="https://github.com/daboyu/2022-GSAT-dashboard" target"_blank">Fork on Github！</a></ul>
+				<ul>有Bug嗎？<a href="https://github.com/daboyu/2022-GSAT-dashboard/issues" target"_blank">來開個Issue吧！</a></ul>
+				<ul>歡迎大大<a href="https://github.com/daboyu/2022-GSAT-dashboard/pulls" target"_blank">發PR來協助優化儀表板</a></ul>
+				<ul class="d-block d-xl-none">建議使用電腦瀏覽</ul>
+				<ul>\祝大家學測就上/</ul>
+				<div class="d-none d-lg-block" id="icon" style="position: absolute; left: 15px; top: calc(-1.5em - 2px); height: 1.5em; outline: 2px solid white;">
                         <a style="font-size: 1em; margin: 0; padding: 3px;"><i class="fas fa-user"></i><span id="none"> 作者資訊</span></a>
                 </div>
 				</div>
@@ -313,6 +318,7 @@
             });
         }
         updatefile();
+		
 		
 		<!-- 詳細資料 -->
 		$("#milestone-0").click(function() {
