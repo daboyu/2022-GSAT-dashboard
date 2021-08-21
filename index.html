@@ -47,6 +47,7 @@
     </div>
     <div style="height: 30%;" class="p-4 container-fluid">
         <h1 class="text-center">2022學測儀表板</h1>
+		<h3 class="text-center" style="margin-bottom: -0.5em;margin-top: 1em;">=學測倒數=</h3>
         <div class="text-center">
             <p class="m-0" id="time-counter">00:00:00:00</p>
         </div>
@@ -126,64 +127,55 @@
 							</ul>
 						</div>
 						<ul class="m-1" id="mo-1" style="display:none;">
-							<h1>第一次模擬考</h1>
-							<ul>時間: 2021/09/08 ~ 2021/09/09</ul>
-							<ul><span>範圍:</span> 
-								<li>國文：1~3冊/英文：1~3冊</li>
-								<li>數 A：1~2冊/數 B：1~2冊</li>
-								<li>社會：1~2冊/自然：1~2冊</li>
-							</ul>
-						</ul>
-						<ul class="m-1" id="mo-2" style="display:none;">
 							<h1>學習歷程上傳截止</h1>
 							<ul>時間: 2021/09/30</ul>
 							<ul>
 								記得要在9/30之前上傳喔！
 							</ul>
 						</ul>
-						<ul class="m-1" id="mo-3" style="display:none;">
+						<ul class="m-1" id="mo-2" style="display:none;">
 							<h1>第一次英聽考試</h1>
 							<ul>時間: 2021/10/23</ul>
 							<ul>
 								<u><a href="https://ap.ceec.edu.tw/RegExam/" target="_blank">公告連結</a></u>
 							</ul>
 						</ul>
-						<ul class="m-1" id="mo-4" style="display:none;">
+						<ul class="m-1" id="mo-3" style="display:none;">
 							<h1>學測參採校系公告</h1>
 							<ul>時間: 2021/10/25</ul>
 							<ul>
 								<u><a href="https://www.cac.edu.tw/" target="_blank">公告連結</a></u>
 							</ul>
 						</ul>
-						<ul class="m-1" id="mo-5" style="display:none;">
+						<ul class="m-1" id="mo-4" style="display:none;">
 							<h1>第一次英聽成績公告</h1>
 							<ul>時間: 2021/11/8</ul>
 							<ul>
 								<u><a href="https://ap.ceec.edu.tw/RegExam/" target="_blank">公告連結</a></u>
 							</ul>
 						</ul>
-						<ul class="m-1" id="mo-6" style="display:none;">
+						<ul class="m-1" id="mo-5" style="display:none;">
 							<h1>第二次英聽考試</h1>
 							<ul>時間: 2021/12/11</ul>
 							<ul>
 								<u><a href="https://ap.ceec.edu.tw/RegExam/" target="_blank">公告連結</a></u>
 							</ul>
 						</ul>
-						<ul class="m-1" id="mo-7" style="display:none;">
+						<ul class="m-1" id="mo-6" style="display:none;">
 							<h1>第二次英聽成績公告</h1>
 							<ul>時間: 2021/12/23</ul>
 							<ul>
 								<u><a href="https://www.cac.edu.tw/" target="_blank">公告連結</a></u>
 							</ul>
 						</ul>
-						<ul class="m-1" id="mo-8" style="display:none;">
+						<ul class="m-1" id="mo-7" style="display:none;">
 							<h1>111學測</h1>
 							<ul>時間: 2022/1/23 ~ 2022/1/25</ul>
 							<ul>
 								\學測就上/
 							</ul>
 						</ul>
-						<ul class="m-1" id="mo-9" style="display:none;">
+						<ul class="m-1" id="mo-8" style="display:none;">
 							<h1>學測成績公告</h1>
 							<ul>時間: 2021/3/1</ul>
 							<ul>
@@ -229,11 +221,6 @@
             {
                 "date-time": "2021/09/1",
                 "title": "111試辦學測",
-                "pos": "center"
-            },
-			{
-                "date-time": "2021/09/8",
-                "title": "第一次模擬考",
                 "pos": "center"
             },
             {
@@ -406,6 +393,18 @@
 		$(".none").hide();
 		$(".m-1").hide();
 		$("#mo-9").show();
+		});
+		
+		$("#milestone-10").click(function() {
+		$(".none").hide();
+		$(".m-1").hide();
+		$("#mo-10").show();
+		});
+		
+		$("#milestone-11").click(function() {
+		$(".none").hide();
+		$(".m-1").hide();
+		$("#mo-11").show();
 		});
 
 

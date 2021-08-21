@@ -1,0 +1,253 @@
+@font-face {
+    font-family: 'digital-webfont';
+    src: url('../webfonts/Digital-Display.woff2') format('woff2'),
+         url('../webfonts/Digital-Display.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-size: 0.9em;
+}
+
+body {
+    background-color: #152433;
+    //background-image: linear-gradient(#041615,#0a2d2b);
+    color: white;
+    font-family: 'Share Tech Mono', 'Noto Sans TC', sans-serif;
+    overflow-x: hidden;
+    width: 100vw;
+}
+
+a:link, a:visited, a:focus {
+    color: white;
+    transition: .5s;
+}
+a:hover {
+    text-decoration: none;
+    color: #dac400;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.2);
+  outline: 1px solid white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dac400;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #CAB400;
+}
+
+#onload-block {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #152433;
+    z-index: 99999;
+}
+
+#time-counter {
+    font-family: 'digital-webfont', 'Noto Sans TC', sans-serif;
+    font-size: 5rem;
+	
+    color: #FAA;
+}
+
+#live-button {
+    position: fixed;
+    right: 1em;
+    top: 1em;
+    z-index: 99999999;
+}
+
+#informations {
+    height: 25%;
+}
+
+#info-textbox {
+    outline: 2px solid #FFF;
+    background: rgba(0,0,0,0.2);
+    height: 100%;
+    overflow: auto;
+	display:  flex;
+    align-items: center;
+	justify-content : space-around;
+}
+
+#info-textbox li{
+	list-style:none;
+}
+
+#info-count {
+    outline: 2px solid #FFF;
+    background: rgba(0,0,0,0.2);
+	
+}
+
+#info-count h1 {
+	font-size: 1.2em;
+    color: #FAF;
+	text-align: center;
+	margin-block-end: 0em;
+}
+
+#info-count ul {
+	margin-block-top: 0em;
+	margin-block-end: 0em;	
+	padding-inline-start: 0px;
+	text-align: center;
+}
+
+#info-count span:not(#none){
+	position: relative;
+	left: -103;
+}
+
+#info-count li {
+	list-style:none;
+}
+
+#timeline-box {
+    background-color: rgba(0,0,0,0.1);
+    padding: 0;
+    height: calc(43% - 3em);
+    margin-bottom: 3em;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+#timeline {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+}
+
+#timeline-bg {
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(270deg, #3f556c, #5b92c7, #3b5e80, #3f556c, #395b7c, #3b5e80, #3f556c, #5b92c7, #3b5e80, #3f556c, #5b92c7, #3b5e80, #3f556c);
+    background-size: 400% 400%;
+    animation: timeline-bg-anim 10s linear infinite;
+}
+
+.css-selector {
+}
+
+@keyframes timeline-bg-anim {
+    0%{background-position:0% 50%}
+    100%{background-position:100% 50%}
+}
+
+.timeline-milestone {
+    padding: 0.5em;
+    width: 12em;
+    height: 6em;
+    position: absolute;
+    background-color: rgba(0,0,255,0.2);
+    transition: 1s;
+}
+.milestone-right {
+    margin-left: -12em;
+}
+.milestone-top {
+    margin-top: calc(-6em - 40px);
+}
+.milestone-bottom {
+    margin-top:  calc(6em + 40px);
+}
+.milestone-left {
+    margin-left: 0em;
+}
+.milestone-center {
+    margin-left: -6em;
+}
+.milestone-right .milestone-arrow {
+    right: 0;
+}
+.milestone-left .milestone-arrow {
+    left: 0;
+}
+.milestone-center .milestone-arrow {
+    left: 50%;
+}
+.milestone-arrow {
+	width: 0;
+	height: 0;
+    position: absolute;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+}
+.milestone-arrow-bottom {
+	border-top: 10px solid rgba(128,128,255,0.6);
+    bottom: -10px;
+}
+.milestone-arrow-top {
+	border-bottom: 10px solid rgba(128,128,255,0.6);
+    top: -10px;
+}
+
+.timeline-milestone.timeline-passed {
+    background-color: rgba(0,0,128,0.1);
+    color: #888;
+}
+
+
+
+#timeline-ft {
+    position: relative;
+    width: 100%;
+    height: 10px;
+    background-color: #dac400;
+    transform: translate(-72%, 0);
+}
+
+#timeline-rocket {
+    position: absolute;
+    height: 30px;
+    right: -10px;
+    bottom: -10px;
+    z-index: 999;
+}
+
+#link-list {
+    overflow-y: auto;
+    overflow-x: hidden;
+	margin:	 10;
+    padding: 3px;
+
+	
+}
+
+
+#link-list li {
+	margin: 5;
+}
+
+
+#spaceapps-logo {
+    background-image: url("../img/spaceapps.svg");
+    background-position: center;
+    background-size: 75%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 1023px) {
+    #timeline-box {
+        font-size: 0.9em;
+        min-height: 22em;
+    }
+    #timeline {
+        width: 500%;
+        left: 0;
+    }
+}
