@@ -1,7 +1,9 @@
 ## 2022學測儀表板
 
 儀錶板頁面 https://https://gsat.dabo.xyz/
+歡迎Fork改作成自己學校的版本，也歡迎發PR改善程式碼。
 
+---
 Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
 This work is licensed under a
