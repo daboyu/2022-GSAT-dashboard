@@ -8,7 +8,7 @@
 }
 
 body {
-    background-color: #0a2d2b;
+    background-color: #152433;
     //background-image: linear-gradient(#041615,#0a2d2b);
     color: white;
     font-family: 'Share Tech Mono', 'Noto Sans TC', sans-serif;
@@ -75,17 +75,44 @@ a:hover {
     background: rgba(0,0,0,0.2);
     height: 100%;
     overflow: auto;
+	display:  flex;
+    align-items: center;
+	justify-content : space-around;
+}
+
+#info-textbox li{
+	list-style:none;
 }
 
 #info-count {
     outline: 2px solid #FFF;
     background: rgba(0,0,0,0.2);
+	
 }
 
-#info-count ul li span {
-    font-size: 1.5em;
+#info-count h1 {
+	font-size: 1.2em;
     color: #FAF;
+	text-align: center;
+	margin-block-end: 0em;
 }
+
+#info-count ul {
+	margin-block-top: 0em;
+	margin-block-end: 0em;	
+	padding-inline-start: 0px;
+	text-align: center;
+}
+
+#info-count span:not(#none){
+	position: relative;
+	left: -103;
+}
+
+#info-count li {
+	list-style:none;
+}
+
 #timeline-box {
     background-color: rgba(0,0,0,0.1);
     padding: 0;
@@ -171,6 +198,8 @@ a:hover {
     color: #888;
 }
 
+
+
 #timeline-ft {
     position: relative;
     width: 100%;
@@ -187,24 +216,20 @@ a:hover {
     z-index: 999;
 }
 
-#message-list {
-    height: 100%;
+#link-list {
     overflow-y: auto;
     overflow-x: hidden;
-}
-
-#message-list p {
-    margin: 0;
+	margin:	 10;
     padding: 3px;
+
+	
 }
 
-#message-list .message-time {
-    color: #dac400;
+
+#link-list li {
+	margin: 5;
 }
-#message-list .message-content {
-    color: #DDD;
-    word-break: break-all;
-}
+
 
 #spaceapps-logo {
     background-image: url("../img/spaceapps.svg");
